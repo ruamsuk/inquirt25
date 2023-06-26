@@ -36,7 +36,6 @@ export class SignUpComponent {
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', Validators.required),
     confirmPassword: new FormControl('', Validators.required),
-    recaptcha: new FormControl('', Validators.required)
   }, {validators: passwordMatchValidator()});
 
   constructor(
@@ -76,8 +75,9 @@ export class SignUpComponent {
 
     /**
      * reCaptcha V.3
+     * in 'action' use only character not symbols
      * */
-    this.reCaptcha.execute(this.siteKey, 'sign-up', (token) => {
+    this.reCaptcha.execute(this.siteKey, 'Signup', (token) => {
       if (!token) {
         this.toast.error('You are not a human!');
         return;

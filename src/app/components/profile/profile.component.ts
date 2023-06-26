@@ -38,7 +38,6 @@ export class ProfileComponent {
     )
       .subscribe((user) => {
         this.profileForm.patchValue({...user});
-        console.log(user);
       });
   }
 
