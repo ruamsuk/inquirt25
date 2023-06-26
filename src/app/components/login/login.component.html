@@ -1,0 +1,47 @@
+<div class="form-container mat-elevation-z5">
+  <h1>Login</h1>
+
+  <form [formGroup]="loginForm" (ngSubmit)="submit()">
+    <mat-form-field>
+      <mat-label>Email Address</mat-label>
+      <input matInput placeholder="Email address" formControlName="email"/>
+      <span matIconSuffix><mat-icon>email</mat-icon></span>
+      <mat-error>
+        Email address is required!
+      </mat-error>
+      <mat-error>
+        Please enter a correct email format!
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input type="{{hide ? 'password' :'text'}}" matInput placeholder="Password" formControlName="password"/>
+      <span matTooltip="{{hide ? 'Text' : 'Password'}}" matSuffix>
+            <mat-icon (click)="hide = !hide" class="icon">
+            {{hide ? 'visibility' : 'visibility_off'}}
+          </mat-icon>
+          </span>
+      <mat-error>
+        Password is required
+      </mat-error>
+    </mat-form-field>
+    <ngx-invisible-recaptcha [siteKey]="siteKey"></ngx-invisible-recaptcha>
+    <div>
+      <a routerLink="/forgot-password"
+         class="text-gray-600 dark:text-gray-500">
+        Forgot password
+      </a>
+    </div>
+    <div class="center margin-top">
+      <button
+        class="full-width"
+        type="submit"
+        mat-raised-button
+        color="primary" [disabled]="loginForm.invalid || loading">Login
+      </button>
+    </div>
+    <div class="center margin-top">New to out platform? <a class="sign-up-link"
+                                                           routerLink="/sign-up"> Sign Up!</a></div>
+  </form>
+</div>
+

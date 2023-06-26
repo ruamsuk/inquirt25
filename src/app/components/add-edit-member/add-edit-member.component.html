@@ -1,0 +1,98 @@
+<mat-toolbar mat-dialog-title>
+  <span class="{{memForm.controls['id'].value ? 'text-red-700' : 'text-blue-900'}} text-2xl font-bold tasadith ">
+    {{memForm.controls['id'].value ? "แก้ไขข้อมูลสมาชิก" : "เพิ่มสมาชิกใหม่"}}
+  </span>
+</mat-toolbar>
+
+<form [formGroup]="memForm" (ngSubmit)="onSubmit()">
+  <div mat-dialog-content class="content">
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>ยศ</mat-label>
+        <mat-select formControlName="rank">
+          <mat-option *ngFor="let ran of rank" [value]="ran" class="sarabun">
+            {{ran}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>ชื่อ</mat-label>
+        <input matInput
+               placeholder="ชื่อ (ไม่ต้องใส่ยศ)"
+               formControlName="firstname"
+               autocomplete="off">
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>นามสกุล</mat-label>
+        <input matInput
+               placeholder="นามสกุล"
+               formControlName="lastname"
+               autocomplete="off">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>วันเดือนปีเกิด</mat-label>
+        <input matInput
+               placeholder="วันเดือนปีเกิด"
+               [matDatepicker]="picker"
+               formControlName="birthdate">
+        <mat-datepicker-toggle matIconSuffix [for]="picker">
+        </mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>ที่อยู่</mat-label>
+        <input matInput
+               formControlName="address"
+               placeholder="บ้านเลขที่ ถนน ตำบล"
+               autocomplete="off">
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>อำเภอ</mat-label>
+        <input matInput
+               formControlName="district"
+               autocomplete="off">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>จังหวัด</mat-label>
+        <input matInput
+               formControlName="province"
+               autocomplete="off">
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>รหัสไปรษณีย์</mat-label>
+        <input matInput
+               formControlName="zip"
+               autocomplete="off">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>โทรศัพท์</mat-label>
+        <input matInput
+               formControlName="phone"
+               autocomplete="off">
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-radio-group aria-label="Select an option" formControlName="alive">
+        <mat-label>สถานะ</mat-label>
+        <mat-radio-button value="มีชีวิตอยู่" [checked]="isAlive">มีชีวิตอยู่</mat-radio-button>
+        <mat-radio-button value="เสียชีวิตแล้ว" [checked]="!isAlive">เสียชีวิตแล้ว</mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+  </div>
+  <div mat-dialog-actions class="action">
+    <button mat-raised-button type="button" (click)="closeDialog()">Cancel</button>
+    <button mat-raised-button
+            color="primary" type="submit">{{data ? 'Update' : 'Save'}}</button>
+  </div>
+
+
+</form>

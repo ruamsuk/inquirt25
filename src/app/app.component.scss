@@ -1,0 +1,18 @@
+mat-toolbar ng-container {
+  //justify-content: space-between;
+  font-family: 'Sarabun', sans-serif !important;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.profile-image-toolbar {
+  border-radius: 100%;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.content {
+  padding: 32px;
+}

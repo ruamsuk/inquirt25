@@ -1,0 +1,121 @@
+/* You can add global styles to this file, and also import other style files */
+@use 'node_modules/@ngneat/hot-toast/src/styles/styles.scss';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// Google Fonts
+@import url('https://fonts.googleapis.com/css2?family=Pattaya&family=Thasadith&family=Sarabun&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,200;0,300;0,400;1,200;1,300;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,400;0,700;1,400;1,700&family=Sarabun:ital,wght@0,100;0,400;0,700;1,400;1,700&display=swap');
+
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: #f0f0f4;
+}
+
+.sarabun {
+  font-family: 'Sarabun', sans-serif !important;
+  font-size: 1rem;
+}
+
+.prompt {
+  font-family: 'Prompt', sans-serif !important;
+}
+
+.tasadith {
+  font-family: 'Thasadith', sans-serif !important;
+}
+
+.form-container {
+  display: block;
+  max-width: 300px;
+  margin: auto;
+
+  background: #eceff1;
+  padding: 48px;
+  border-radius: 16px;
+}
+
+.form-container mat-form-field {
+  width: 100%;
+}
+
+.form-container input {
+  font-family: 'Sarabun', sans-serif !important;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.sign-up-link {
+  font-size: 1.2rem;
+  margin-left: 8px;
+}
+
+.margin-top {
+  margin-top: 16px;
+}
+
+/* Mat table */
+.mat-sort-header-content, .mat-mdc-header-cell {
+  font-family: 'Prompt', sans-serif !important;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+//.mat-mdc-table tbody,
+//.mat-mdc-table tfoot,
+//.mat-mdc-table thead,
+//.mat-mdc-cell,
+//.mat-mdc-footer-cell,
+//.mat-mdc-header-row,
+/*.mat-mdc-row-rank {
+  width: 1%;
+}*/
+//.mat-mdc-footer-row,
+.mat-mdc-table .mat-mdc-header-cell {
+  background: #eef3f8 !important;
+}
+
+.mat-mdc-table .mat-mdc-row:hover {
+  cursor: pointer;
+  background: #f4f0f0 !important;
+}
+
+.mdc-data-table__cell {
+  font-family: 'Sarabun', sans-serif;
+  font-size: 16px;
+}
+
+.cell-align {
+  text-align: center;
+  vertical-align: middle;
+  padding: 5px;
+}
+
+.mat-column-id {
+  width: 70px;
+  max-width: 90px;
+}
+.mat-column-rank {
+  width: 90px;
+  max-width: 100px;
+}
+
+.loading-shade {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.15);
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

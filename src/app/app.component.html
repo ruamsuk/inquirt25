@@ -1,0 +1,49 @@
+<mat-toolbar color="primary" class="mat-elevation-z2">
+  <span><img ngSrc="assets/images/police-man-small.png" alt="logo" width="50" height="88"></span>
+  <span routerLink="/">Inquiry 25 Members </span>
+  <span class="example-spacer"></span>
+  <ng-container *ngIf="user$ | async as user; else loginButton">
+    <button mat-button [matMenuTriggerFor]="userMenu">
+      <img *ngIf="userImg" class="profile-image-toolbar" width="30" height="30"
+           [ngSrc]="userImg"
+           alt="image" loading="eager">
+      <img *ngIf="!userImg" class="profile-image-toolbar" width="30" height="30"
+           [ngSrc]="'assets/images/dummy-user.png'"
+           alt="image" loading="eager">
+      <span class="sarabun">
+           {{ user.displayName ? user.displayName : user.email }}
+      </span>
+    </button>
+    <mat-icon>expand_more</mat-icon>
+  </ng-container>
+  <ng-template #loginButton>
+    <button mat-button routerLink="login">
+      <mat-icon>login</mat-icon>
+      Login
+    </button>
+  </ng-template>
+</mat-toolbar>
+
+<div class="content">
+  <router-outlet></router-outlet>
+</div>
+
+<mat-menu #userMenu >
+  <button *ngIf="(canDo)" mat-menu-item routerLink="/profile" class="sarabun">
+    <mat-icon>account_circle</mat-icon>
+    Profile
+  </button>
+  <button mat-menu-item routerLink="/user-list" class="sarabun">
+    <mat-icon>list</mat-icon>
+    <span class="sarabun">รายชื่อสมาชิก</span>
+  </button>
+  <button mat-menu-item routerLink="/depart-list" class="sarabun">
+    <mat-icon>reduce_capacity</mat-icon>
+    <span class="sarabun">สมาชิกที่เสียชีวิต</span>
+  </button>
+  <button mat-menu-item (click)="logout()" class="sarabun">
+    <mat-icon>logout</mat-icon>
+    <span class="sarabun"></span>Logout
+  </button>
+</mat-menu>
+<app-footer></app-footer>

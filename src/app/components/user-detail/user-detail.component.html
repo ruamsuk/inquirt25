@@ -1,0 +1,53 @@
+<mat-toolbar mat-dialog-title>
+  <span class="text-3xl font-bold text-primary-900 tasadith">
+    รายละเอียดสมาชิก
+  </span>
+</mat-toolbar>
+<mat-dialog-content class="p-6">
+  <table class="table-striped">
+    <tr>
+      <th>ยศ ชื่อ สกุล:</th>
+      <td>
+        {{users.rank}}{{users.firstname}} {{users.lastname}}
+      </td>
+    </tr>
+    <tr>
+      <th>วันเกิด:</th>
+      <td>
+        {{users.birthdate | thaiDate}}
+      </td>
+    </tr>
+    <tr>
+      <th>ที่อยู่:</th>
+      <td>{{users.address}}</td>
+    </tr>
+    <tr>
+      <th>อำเภอ จังหวัด:</th>
+      <td>{{users.district}} {{users.province}}</td>
+    </tr>
+    <tr>
+      <th>โทรศัพท์:</th>
+      <td>{{users.phone}}</td>
+    </tr>
+    <tr>
+      <th>อายุ:</th>
+      <td>
+        <mat-chip-listbox>
+          <mat-chip-option color="accent" selected class="sarabun font-semibold">{{age}}</mat-chip-option>
+        </mat-chip-listbox>
+      </td>
+    </tr>
+    <tr>
+      <th>สถานะ:</th>
+      <td>
+        <span class="{{users.alive == 'เสียชีวิตแล้ว' ? 'text-amber-500' : 'text-emerald-800'}} font-semibold">
+          {{users.alive}}
+        </span>
+      </td>
+    </tr>
+  </table>
+  <hr class="h-px bg-gray-200 border-0 dark:bg-gray-700">
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button [mat-dialog-close]="true" mat-stroked-button>Close</button>
+</mat-dialog-actions>

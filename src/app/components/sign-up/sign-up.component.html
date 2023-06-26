@@ -1,0 +1,61 @@
+<div class="form-container mat-elevation-z5">
+  <h1>SingUp</h1>
+
+  <form [formGroup]="signUpForm" (ngSubmit)="submit()">
+    <mat-form-field>
+      <mat-label>Display Name</mat-label>
+      <input matInput placeholder="Display name" formControlName="name"/>
+      <mat-error>
+        Name is required!
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Email Address</mat-label>
+      <input matInput placeholder="Email address" formControlName="email"/>
+      <mat-error>
+        Email address is required!
+      </mat-error>
+      <mat-error *ngIf="email?.invalid">
+        Please enter a correct email format!
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input type="password" matInput placeholder="Password" formControlName="password"/>
+      <mat-error>
+        Password is required
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Confirm Password</mat-label>
+      <input type="password" matInput placeholder="Confirm password" formControlName="confirmPassword"/>
+      <mat-error>
+        Password is required
+      </mat-error>
+    </mat-form-field>
+    <mat-error *ngIf="signUpForm.errors?.['passwordsDontMatch']">
+      Password should match
+    </mat-error>
+    <div>
+      <ngx-invisible-recaptcha [siteKey]="siteKey"></ngx-invisible-recaptcha>
+    </div>
+    <div class="center margin-top" >
+      <button [disabled]="signUpForm.invalid"
+        class="full-width"
+        type="submit"
+        mat-raised-button
+        color="primary">Sign Up
+      </button>
+    </div>
+    <div
+      class="center margin-top">
+      Have an account?
+      <a class="sign-up-link" routerLink="/login">
+        Sign In!
+      </a>
+    </div>
+
+  </form>
+</div>
+
+

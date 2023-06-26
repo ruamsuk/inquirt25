@@ -1,0 +1,43 @@
+<mat-toolbar mat-dialog-title>
+  <span class="{{depForm.controls['id'].value ? 'text-red-700' : 'text-blue-900'}} text-2xl font-bold tasadith ">
+    {{depForm.controls['id'].value ? "แก้ไขข้อมูลสมาชิก" : "เพิ่มสมาชิกใหม่"}}
+  </span>
+</mat-toolbar>
+
+<form [formGroup]="depForm" (ngSubmit)="onSubmit()">
+  <div mat-dialog-content class="content">
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>ยศ</mat-label>
+        <mat-select formControlName="rank">
+          <mat-option *ngFor="let ran of rank" [value]="ran" class="sarabun">
+            {{ran}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>ชื่อ</mat-label>
+        <input matInput
+               placeholder="ชื่อ (ไม่ต้องใส่ยศ)"
+               formControlName="firstname"
+               autocomplete="off">
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>นามสกุล</mat-label>
+        <input matInput
+               placeholder="นามสกุล"
+               formControlName="lastname"
+               autocomplete="off">
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div mat-dialog-actions class="action">
+    <button mat-raised-button type="button" (click)="closeDialog()">Cancel</button>
+    <button mat-raised-button
+            color="primary" type="submit">{{data ? 'Update' : 'Save'}}</button>
+  </div>
+
+</form>
